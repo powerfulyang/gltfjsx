@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 import meow from 'meow'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+import { fileURLToPath } from 'node:url'
+import { dirname } from 'node:path'
 import gltfjsx from './src/gltfjsx.js'
 import { readPackageUpSync } from 'read-pkg-up'
 
@@ -60,7 +59,7 @@ const cli = meow(
       degraderesolution: { type: 'number', shortFlag: 'Q', default: 512 },
       simplify: { type: 'boolean', shortFlag: 'S', default: false },
       keepmeshes: { type: 'boolean', shortFlag: 'j', default: false },
-      keepmaterials: { type: 'boolean', shortFlag: 'M', default: false },      
+      keepmaterials: { type: 'boolean', shortFlag: 'M', default: false },
       format: { type: 'string', shortFlag: 'f', default: 'webp' },
       weld: { type: 'number', default: 0.0001 },
       ratio: { type: 'number', default: 0.75 },

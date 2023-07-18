@@ -1,6 +1,6 @@
 import 'jsdom-global'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import transform from './utils/transform.js'
 
 import { GLTFLoader } from './bin/GLTFLoader.js'
@@ -48,8 +48,9 @@ export default function (file, output, options) {
         gltfLoader.parse(
           arrayBuffer,
           '',
-          (gltf) => {
-            stream.write(parse(gltf, { fileName: filePath, ...options }))
+           async (gltf) => {
+            const chunk = await parse(gltf, { fileName: filePath, ...options });
+            stream.write(chunk)
             stream.end()
             resolve()
           },
